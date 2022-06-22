@@ -50,12 +50,39 @@ function startGame() {
 
 function moveOutcomes() {
     checkForGameEnd();
-    updateSnake();
-    eatsAnApple();
-    updateScore();
+    // remove the tail
+    // The pop() method removes the last element from an array
+    const tail = currentSnake.pop();
+    squares[tail].classList.remove("snake");
+  
+    // The unshift() method adds one or more elements to the BEGINNING of an array
+    // give direction to the array
+    currentSnake.unshift(currentSnake[0] + direction);
+  
+    // eats an apple
+    if (squares[currentSnake[0]].classList.contains("apple")) {
+      squares[currentSnake[0]].classList.remove("apple");
+      squares[tail].classList.add("snake");
+      // The push() method adds one or more elements to the END of an array
+      currentSnake.push(tail);
+  
+      randomApple();
+  
+      score++;
+      if (score > 0) {
+        scoreDisplay.style.color = "green";
+      } else {
+        scoreDisplay.style.color = "black";
+      }
+      scoreDisplay.textContent = "SCORE: " + score;
+  
+      clearInterval(interval);
+      intervalTime = intervalTime * speed;
+      interval = setInterval(moveOutcomes, intervalTime);
+    }
     squares[currentSnake[0]].classList.add("snake");
-}
-
+  }
+  
 function checkForGameEnd(){
     if (
         (currentSnake[0] % width === width - 1 && direction === 1) ||           // snake head hits right
@@ -98,7 +125,10 @@ function eatsAnApple(params) {
 }
 
 function updateScore(){
-    score++;
+    if (score > 0) {
+        score++;    
+    }
+    
     if (score > 0) {
       scoreDisplay.style.color = "green";
     } else {
