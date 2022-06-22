@@ -39,7 +39,6 @@ function startGame() {
 
     updateScore();
 
-    scoreDisplay.innerText = "SCORE: " + score;
     intervalTime = 500;         // Snake moves every half second - 
     currentSnake = [2, 1, 0];   // Set default snake
     currentIndex = 0;
