@@ -61,7 +61,7 @@ function checkForGameEnd(){
     if (
         (currentSnake[0] % width === width - 1 && direction === 1) ||           // snake head hits right
         (currentSnake[0] - width < 0 && direction === -width)||                 // snake head hits top
-    (currentSnake[0] % width === 0 && direction === -1) ||                      // snake head hits left
+        (currentSnake[0] % width === 0 && direction === -1) ||                  // snake head hits left
         (currentSnake[0] + width >= width * width && direction === width) ||    // snake head hits bottom
         squares[currentSnake[0] + direction].classList.contains("snake")        // snake hits self
       ) {
