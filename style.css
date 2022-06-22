@@ -1,3 +1,9 @@
+body {
+    background-color: #96d202;
+}
+  
+  
+
 .page-container{
     position: absolute;
     left: 50%;
@@ -18,7 +24,7 @@
 .grid div {
     width: 20px;
     height: 20px;
-    background-color: aquamarine;
+    background-color: #96d202;
 }
 
 .title{
