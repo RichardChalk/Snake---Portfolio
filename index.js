@@ -52,7 +52,7 @@ function setDefaultSnake(){
     currentSnake = [2, 1, 0];   // Set default snake
     currentIndex = 0;
 
-    // Now we can "fill" the snake
+    // Now I can "fill" the snake
     currentSnake.forEach((index) => squares[index].classList.add("snake"));
 }
 
@@ -103,47 +103,6 @@ function moveOutcomes() {
     squares[currentSnake[0]].classList.add("snake");
 }
       
-function checkForGameEnd(){
-    if (
-        (currentSnake[0] % width === width - 1 && direction === 1) ||           // snake head hits right
-        (currentSnake[0] - width < 0 && direction === -width)||                 // snake head hits top
-        (currentSnake[0] % width === 0 && direction === -1) ||                  // snake head hits left
-        (currentSnake[0] + width >= width * width && direction === width) ||    // snake head hits bottom
-        squares[currentSnake[0] + direction].classList.contains("snake")        // snake hits self
-        ) {
-        scoreDisplay.style.color = "red";                                       // I know there is no RED in Snake... couldnt stop myself
-        scoreDisplay.innerText = "Game Over! " + score;
-        return clearInterval(interval);                                         // ends game if any of the above happen
-        }
-}
-
-function updateSnake() {
-    // remove the tail
-    // The pop() method removes the last element from an array
-    const tail = currentSnake.pop();
-    squares[tail].classList.remove("snake");
-
-    // The unshift() method adds one or more elements to the BEGINNING of an array
-    // give direction to the array
-    currentSnake.unshift(currentSnake[0] + direction);
-}
-
-function eatsAnApple(params) {
-    if (squares[currentSnake[0]].classList.contains("apple")) {
-    squares[currentSnake[0]].classList.remove("apple");
-    squares[tail].classList.add("snake");
-    // The push() method adds one or more elements to the END of an array
-    currentSnake.push(tail);
-
-    randomApple();
-    displayScore();
-
-    clearInterval(interval);
-    intervalTime = intervalTime * speed;
-    interval = setInterval(moveOutcomes, intervalTime);
-  }
-}
-
 function displayScore(){
     if (score > 0) {
       scoreDisplay.style.color = "green";
