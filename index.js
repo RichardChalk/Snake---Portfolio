@@ -66,7 +66,7 @@ function moveOutcomes() {
       squares[currentSnake[0] + direction].classList.contains("snake") // snake hits self
     ) {
       scoreDisplay.style.color = "red";
-      scoreDisplay.innerText = "Game Over! " + score;
+      scoreDisplay.innerText = "GAME OVER! " + score;
       return clearInterval(interval); // ends game if any of the above happen
     }
   
