@@ -115,4 +115,24 @@ function randomApple() {
       squares[appleIndex].classList.add("apple");
 }
 
-startGame();
+// Setting direction of the snake=============================================================
+function control(event) {
+    squares[currentIndex].classList.remove("snake");
+  
+    // Stop snakey from ending the game if he reverses on himself
+    if (event.key === "ArrowRight") {
+      direction = 1;                        // snake moves 1 div to the right
+    } else if (event.key === "ArrowUp") {
+      direction = -width;                   // snake goes back 10 divs (appearing to move upwards)
+    } else if (event.key === "ArrowLeft") {
+      direction = -1;                       // snake moves 1 div to the left
+    } else if (event.key === "ArrowDown") {
+      direction = +width;                   // snake goes forward 10 divs (appearing to move downwards)
+    }
+  }
+
+  // Event listeners============================================================================
+
+document.addEventListener("keyup", control);
+startBtn.addEventListener("click", startGame);
+  
