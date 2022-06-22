@@ -66,12 +66,11 @@ body {
     transition: 0.4s;
 }
   
-  .start:hover {
+.start:hover {
     color: #1b2c0b;
     background: #96d202;
     cursor: pointer;
 }
-  
   
   
 
