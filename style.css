@@ -1,8 +1,6 @@
 body {
     background-color: #96d202;
 }
-  
-  
 
 .page-container{
     position: absolute;
@@ -12,6 +10,10 @@ body {
     height: 100vh;
 }
 
+.title{
+    width: 80%;
+}
+
 .grid{
     width: 280px;
     height: 280px;
@@ -19,15 +21,54 @@ body {
     flex-wrap: wrap;
     border-radius: .5rem;
     border: 4px solid rgba(27, 44, 11, .8);
+    margin: 0 auto;
 }
 
 .grid div {
     width: 20px;
     height: 20px;
-    background-color: #96d202;
 }
 
-.title{
-    width: 80%;
+.snake {
+    background-color: rgba(27, 44, 11, 0.8);
 }
+  
+.apple {
+    background-color: #1b2c0b;
+}
+
+.score {
+    text-transform: uppercase;
+    color: rgba(27, 44, 11, 0.8);
+}
+
+.btn-score {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 1rem;
+    font-size: 1.5rem;
+}
+
+.start {
+    padding: 0.8rem 1.5rem 0.5rem 1.5rem;
+    border-radius: 0.5rem;
+    margin-bottom: 1.5rem;
+    color: #96d202;
+    background: #1b2c0b;
+    font-size: 1.5rem;
+    transition: 0.4s;
+}
+  
+  .start:hover {
+    color: #1b2c0b;
+    background: #96d202;
+    cursor: pointer;
+}
+  
+  
+  
+
+
+  
   

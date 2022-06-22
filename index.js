@@ -105,7 +105,7 @@ function updateScore(){
     } else {
       scoreDisplay.style.color = "black";
     }
-    scoreDisplay.textContent = "My score: " + score;
+    scoreDisplay.textContent = "SCORE: " + score;
 }
 
 function randomApple() {
