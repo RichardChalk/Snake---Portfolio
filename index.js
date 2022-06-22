@@ -27,25 +27,33 @@ let interval = 0;               // Used for timing
 
 // Start & restart the game
 function startGame() {
-    // Clear the game and create an apple
+    clearGame();
+    randomApple();
+    displayScore();
+    setDefaultSnake();  
+    
+    // Calls function "moveOutcomes" every interval time (every half second to start with)
+    interval = setInterval(moveOutcomes, intervalTime);
+}
+
+function clearGame() {
+    // Clear the game
     currentSnake.forEach((index) => squares[index].classList.remove("snake"));
     squares[appleIndex].classList.remove("apple");
     clearInterval(interval);
     score=0;
-    randomApple();
 
     // Default direction is right (adding 1 to the array is the same as moving right)
     direction=1;
+}
 
-    displayScore();
-
+function setDefaultSnake(){
     intervalTime = 500;         // Snake moves every half second - 
     currentSnake = [2, 1, 0];   // Set default snake
     currentIndex = 0;
 
     // Now we can "fill" the snake
     currentSnake.forEach((index) => squares[index].classList.add("snake"));
-    interval = setInterval(moveOutcomes, intervalTime);
 }
 
 function moveOutcomes() {
@@ -93,7 +101,7 @@ function moveOutcomes() {
       interval = setInterval(moveOutcomes, intervalTime);
     }
     squares[currentSnake[0]].classList.add("snake");
-  }
+}
       
 function checkForGameEnd(){
     if (
@@ -102,11 +110,11 @@ function checkForGameEnd(){
         (currentSnake[0] % width === 0 && direction === -1) ||                  // snake head hits left
         (currentSnake[0] + width >= width * width && direction === width) ||    // snake head hits bottom
         squares[currentSnake[0] + direction].classList.contains("snake")        // snake hits self
-      ) {
-        scoreDisplay.style.color = "red";
+        ) {
+        scoreDisplay.style.color = "red";                                       // I know there is no RED in Snake... couldnt stop myself
         scoreDisplay.innerText = "Game Over! " + score;
         return clearInterval(interval);                                         // ends game if any of the above happen
-      }
+        }
 }
 
 function updateSnake() {
