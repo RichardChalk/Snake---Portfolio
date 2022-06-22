@@ -24,3 +24,19 @@ let score = 0;
 let speed = .85;                // Can be increased to make game more difficult
 let intervalTime = 0;           // Used for timing
 let interval = 0;               // Used for timing
+
+// Start & restart the game
+function startGame() {
+    // Clear the game and create an apple
+    currentSnake.forEach((index) => squares[index].classList.remove("snake"));
+    squares[appleIndex].classList.remove("apple");
+    clearInterval(interval);
+    score=0;
+    randomApple();
+
+    // Default direction is right (adding 1 to the array is the same as moving right)
+}
+
+function randomApple() {
+    
+}
