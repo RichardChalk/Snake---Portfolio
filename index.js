@@ -35,6 +35,27 @@ function startGame() {
     randomApple();
 
     // Default direction is right (adding 1 to the array is the same as moving right)
+    direction=1;
+
+    if (score > 0) {
+        scoreDisplay.style.color = "green"
+    } else{
+        scoreDisplay.style.color = "rgba(27, 44, 11, 0.8)"
+    }
+    scoreDisplay.innerText = "SCORE: " + score;
+    intervalTime = 500;         // Snake moves every half second - 
+    currentSnake = [2, 1, 0];   // Set default snake
+    currentIndex = 0;
+
+    // Now we can "fill" the snake
+    currentSnake.forEach((index) => squares[index].classList.add("snake"));
+    interval = setInterval(moveOutcomes, intervalTime);
+}
+
+startGame();
+
+function moveOutcomes() {
+    
 }
 
 function randomApple() {
