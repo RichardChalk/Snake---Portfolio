@@ -6,4 +6,18 @@
     height: 100vh;
 }
 
+.grid{
+    width: 280px;
+    height: 280px;
+    display: flex;
+    flex-wrap: wrap;
+    border-radius: .5rem;
+    border: 4px solid rgba(27, 44, 11, .8);
+}
 
+.grid div {
+    width: 20px;
+    height: 20px;
+    background-color: aquamarine;
+  }
+  
