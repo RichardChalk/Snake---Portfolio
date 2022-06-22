@@ -37,7 +37,7 @@ function startGame() {
     // Default direction is right (adding 1 to the array is the same as moving right)
     direction=1;
 
-    updateScore();
+    displayScore();
 
     intervalTime = 500;         // Snake moves every half second - 
     currentSnake = [2, 1, 0];   // Set default snake
@@ -49,7 +49,19 @@ function startGame() {
 }
 
 function moveOutcomes() {
-    checkForGameEnd();
+    // Check is game is over - illegal move
+    if (
+      (currentSnake[0] % width === width - 1 && direction === 1) || // snake head hits right
+      (currentSnake[0] - width < 0 && direction === -width) || // snake head hits top
+      (currentSnake[0] % width === 0 && direction === -1) || // snake head hits left
+      (currentSnake[0] + width >= width * width && direction === width) || // snake head hits bottom
+      squares[currentSnake[0] + direction].classList.contains("snake") // snake hits self
+    ) {
+      scoreDisplay.style.color = "red";
+      scoreDisplay.innerText = "Game Over! " + score;
+      return clearInterval(interval); // ends game if any of the above happen
+    }
+  
     // remove the tail
     // The pop() method removes the last element from an array
     const tail = currentSnake.pop();
@@ -82,7 +94,7 @@ function moveOutcomes() {
     }
     squares[currentSnake[0]].classList.add("snake");
   }
-  
+      
 function checkForGameEnd(){
     if (
         (currentSnake[0] % width === width - 1 && direction === 1) ||           // snake head hits right
@@ -116,7 +128,7 @@ function eatsAnApple(params) {
     currentSnake.push(tail);
 
     randomApple();
-    updateScore();
+    displayScore();
 
     clearInterval(interval);
     intervalTime = intervalTime * speed;
@@ -124,11 +136,7 @@ function eatsAnApple(params) {
   }
 }
 
-function updateScore(){
-    if (score > 0) {
-        score++;    
-    }
-    
+function displayScore(){
     if (score > 0) {
       scoreDisplay.style.color = "green";
     } else {
