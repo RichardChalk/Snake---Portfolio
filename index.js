@@ -98,7 +98,7 @@ function eatsAnApple(params) {
   }
 }
 
-updateScore(){
+function updateScore(){
     score++;
     if (score > 0) {
       scoreDisplay.style.color = "green";
